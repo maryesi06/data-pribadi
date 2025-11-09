@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Pribadi - Maryesi Telussa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="background-decor"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="fade">
+    <h1>Maryesi Telussa</h1>
+    <nav>
+      <ul>
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#hobi">Hobi</a></li>
+        <li><a href="#skills">Skill</a></li>
+        <li><a href="#interaksi">Pesan</a></li>
+      </ul>
+    </nav>
+    <button id="darkToggle">🌙</button>
+  </header>
+
+  <!-- ===== PROFIL ===== -->
+  <section id="profil" class="profil fade">
+    <div class="profil-container">
+      <img src="eci.jpg" alt="Foto Profil" class="foto-profil">
+      <div class="info-profil">
+        <h2>Maryesi Telussa</h2>
+        <p><strong>TTL:</strong> Kelapa Lima, 06 Maret 2005</p>
+        <p><strong>Alamat:</strong> Matanga, Kec. Banggai Selatan</p>
+        <p><strong>Email:</strong> maryesitelussa@gmail.com</p>
+        <p><strong>No. HP:</strong> 0852-8734-1898</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TENTANG ===== -->
+  <section id="tentang" class="tentang fade">
+    <h2>Tentang Saya</h2>
+    <p>Saya adalah mahasiswa yang tertarik pada bidang teknologi informasi, khususnya pengembangan web dan keamanan data. Saya suka belajar hal baru dan membuat proyek sederhana seperti website ini.</p>
+  </section>
+
+  <!-- ===== HOBI ===== -->
+  <section id="hobi" class="hobi fade">
+    <h2>Hobi</h2>
+    <ul>
+      <li>Main volly</li>
+      <li>Ngoding</li>
+      <li>Mendengarkan musik</li>
+      <li>Nyanyi</li>
+    </ul>
+  </section>
+
+  <!-- ===== SKILL ===== -->
+  <section id="skills" class="fade">
+    <h2>Keahlian</h2>
+    <div class="skill-bar">
+      <p>HTML</p><div class="bar"><div class="progress" style="width: 90%;"></div></div>
+      <p>CSS</p><div class="bar"><div class="progress" style="width: 85%;"></div></div>
+      <p>JavaScript</p><div class="bar"><div class="progress" style="width: 70%;"></div></div>
+      <p>Desain UI/UX</p><div class="bar"><div class="progress" style="width: 65%;"></div></div>
+    </div>
+  </section>
+
+  <!-- ===== FORM PESAN ===== -->
+  <section id="interaksi" class="interaksi fade">
+    <h2>Kirim Pesan</h2>
+    <input type="text" id="namaInput" placeholder="Masukkan nama kamu...">
+    <button id="tombolKirim">Kirim</button>
+    <p id="pesan"></p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="fade">
+    <p>&copy; 2025 Maryesi Telussa | Dibuat dengan ❤️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

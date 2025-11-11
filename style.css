@@ -1,0 +1,150 @@
+/* === Gaya Dasar Halaman === */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #e4ebf0);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: #333;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* === Efek Warna di Samping Kiri dan Kanan === */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 160px;
+  height: 100%;
+  z-index: -1;
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+body::before {
+  left: 0;
+  background: linear-gradient(to bottom, #80deea, #f48fb1);
+}
+
+body::after {
+  right: 0;
+  background: linear-gradient(to bottom, #f48fb1, #80deea);
+}
+
+/* === Header === */
+header {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #222;
+}
+
+/* === Kontainer Section === */
+section {
+  background: rgba(255, 255, 255, 0.8);
+  margin: 40px auto;
+  padding: 30px;
+  max-width: 700px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* === Profil === */
+.profil {
+  text-align: center;
+}
+
+.foto-profil {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid #00bcd4;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* === Hobi === */
+.hobi ul {
+  list-style: circle;
+  padding-left: 20px;
+}
+
+.hobi li {
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.hobi li:hover {
+  color: #00bcd4;
+}
+
+/* Foto hobi yang muncul */
+.foto-hobi {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.foto-hobi img {
+  max-width: 90%;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s ease, transform 0.4s ease;
+}
+
+.foto-hobi img.tampil {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* === Interaksi === */
+.interaksi {
+  text-align: center;
+}
+
+.interaksi input {
+  padding: 10px 15px;
+  width: 70%;
+  max-width: 300px;
+  border: 2px solid #00bcd4;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.interaksi button {
+  padding: 10px 20px;
+  background: linear-gradient(to right, #00bcd4, #f48fb1);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  font-size: 14px;
+  color: #555;
+}

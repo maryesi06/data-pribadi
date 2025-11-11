@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Pribadi</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #e6f4f7;
+      color: #333;
+      font-size: 1.1rem; /* naik dari default 1rem */
+      scroll-behavior: smooth;
+    }
+
+    /* ===== HEADER FULLSCREEN ===== */
+    header {
+      background: url('ecii.jpg') center/cover no-repeat fixed;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        rgba(0, 180, 255, 0.4),
+        rgba(0, 140, 200, 0.5)
+      );
+    }
+
+    header h1 {
+      position: relative;
+      font-size: 4rem; /* dari 3rem jadi lebih besar */
+      font-weight: 700;
+      z-index: 2;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 1.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      font-size: 1.3rem; /* lebih besar */
+      z-index: 3;
+      animation: bounce 1.8s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(90deg, #00bcd4, #007c91);
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 25px;
+      font-weight: 600; /* sedikit lebih tebal */
+      font-size: 1.15rem; /* lebih besar */
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+
+    /* ===== CARD CONTENT ===== */
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      padding: 35px;
+      margin-bottom: 35px;
+      transition: 0.3s ease;
+      font-size: 1.15rem; /* naik dari default */
+      line-height: 1.7;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #0097a7;
+      border-bottom: 2px solid #4dd0e1;
+      display: inline-block;
+      padding-bottom: 5px;
+      font-size: 1.6rem;
+    }
+
+    ul li {
+      cursor: pointer;
+      margin: 8px 0;
+      transition: 0.3s;
+      font-size: 1.1rem;
+    }
+
+    ul li:hover {
+      color: #00acc1;
+      transform: translateX(5px);
+    }
+
+    /* ===== MODAL GALERI ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 200;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 30px;
+    }
+
+    .modal h3 {
+      color: white;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+    }
+
+    .gallery-slider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      width: 90%;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+
+    .gallery-slider img {
+      height: 260px; /* sedikit lebih besar */
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, opacity 0.3s;
+    }
+
+    .gallery-slider img:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .close {
+      position: fixed;
+      top: 20px;
+      right: 40px;
+      background: #00bcd4;
+      color: white;
+      font-size: 30px; /* lebih besar */
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 300;
+    }
+
+    .close:hover {
+      background: #0097a7;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(90deg, #00bcd4, #007c91);
+      color: #fff;
+      text-align: center;
+      padding: 30px 10px;
+      margin-top: 50px;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 1rem;
+      }
+      header h1 {
+        font-size: 2.8rem;
+      }
+      nav a {
+        font-size: 1rem;
+        margin: 0 15px;
+      }
+      .gallery-slider img {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Data Pribadi</h1>
+    <div class="scroll-down">⬇️ Gulir ke bawah</div>
+  </header>
+
+  <nav>
+    <a href="#profil">Profil</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#hobi">Hobi</a>
+    <a href="#skill">Skill</a>
+    <a href="#pesan">Pesan</a>
+  </nav>
+
+  <div class="container">
+    <section id="profil" class="card">
+      <h2>Profil</h2>
+      <p><b>Nama:</b> Maryesi Telussa</p>
+      <p><b>TTL:</b> Kelapa Lima, 06 Maret 2005</p>
+      <p><b>Alamat:</b> Matanga, Kec. Banggai Selatan</p>
+      <p><b>Email:</b> maryesitelussa@gmail.com</p>
+      <p><b>No. HP:</b> 0852-8734-1898</p>
+    </section>
+
+    <section id="tentang" class="card">
+      <h2>Tentang Saya</h2>
+      <p>
+        Saya adalah mahasiswa yang tertarik pada bidang teknologi informasi, khususnya pengembangan web dan keamanan data.
+        Saya suka belajar hal baru dan membuat proyek sederhana seperti website ini.
+      </p>
+    </section>
+
+    <section id="hobi" class="card">
+      <h2>Hobi</h2>
+      <ul>
+        <li onclick="openGallery('sunset')">Foto Sunset</li>
+        <li onclick="openGallery('olahraga')">Olahraga</li>
+        <li onclick="openGallery('pemandangan')">Foto Pemandangan</li>
+      </ul>
+    </section>
+
+    <section id="skill" class="card">
+      <h2>Skill</h2>
+      <ul>
+        <li>HTML, CSS, dan JavaScript</li>
+      </ul>
+    </section>
+
+    <section id="pesan" class="card">
+      <h2>Pesan</h2>
+      <p>“Teruslah belajar dan berproses, karena setiap langkah kecil membawa kita lebih dekat pada impian.”</p>
+    </section>
+  </div>
+
+  <div id="galleryModal" class="modal">
+    <button class="close" onclick="closeGallery()">×</button>
+    <h3 id="galleryTitle"></h3>
+    <div class="gallery-slider" id="galleryContent"></div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Maryesi Telussa | Data Pribadi</p>
+  </footer>
+
+  <script>
+    const galleryImages = {
+      sunset: [
+        "sunset1.jpg", "sunset2.jpg", "sunset3.jpg", "sunset4.jpg",
+        "sunset5.jpg", "sunset6.jpg", "sunset7.jpg", "sunset8.jpg",
+        "sunset9.jpg", "sunset10.jpg", "sunset11.jpg", "sunset12.jpg", "sunset13.jpg"
+      ],
+      olahraga: [
+        "olahraga1.jpg", "olahraga2.jpg"
+      ],
+      pemandangan: [
+        "pemandangan1.jpg", "pemandangan2.jpg", "pemandangan3.jpg", "pemandangan4.jpg"
+      ]
+    };
+
+    function openGallery(type) {
+      const modal = document.getElementById("galleryModal");
+      const title = document.getElementById("galleryTitle");
+      const content = document.getElementById("galleryContent");
+
+      title.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+      content.innerHTML = galleryImages[type]
+        .map(src => `<img src="${src}" alt="">`)
+        .join("");
+
+      modal.style.display = "flex";
+    }
+
+    function closeGallery() {
+      document.getElementById("galleryModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
